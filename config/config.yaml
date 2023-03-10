@@ -1,0 +1,15 @@
+aws:
+  ntech:
+    tfstateBucket: tf-be-chaeyk-304362701785-ap-northeast-2 
+    region: ap-northeast-2
+    dynamoTable: chaeyk-terraform-lock
+    namePrefix: chaeyk
+
+    # 개인 설정에 따라 config-personal.yaml 파일에서 override 해야 한다.
+    profile: ntech
+
+ntech:
+  aws: ntech
+  # ecr:
+  #   private: ['wallet']
+  #   public: ['docker-awscli']
