@@ -13,13 +13,13 @@ https://www.terraform.io/cdktf
 
 첫번째는 cdktf 명령으로 바로 deploy 시키는 것
 ```bash
-npx cdktf deploy [local|dq|stg|live]
+npx cdktf deploy ntech 
 ```
 
 두번째는 cdktf 명령으로 테라폼 파일을 생성한 후 terraform 을 직접 실행하는 것
 ```bash
-npx cdktf synth [local|dq|stg|live]
-cd cdktf.out/stacks/local
+npx cdktf synth
+cd cdktf.out/stacks/ntech
 terraform init # 처음 실행하는 거라면...
 terraform apply
 ```
