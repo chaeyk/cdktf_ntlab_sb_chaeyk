@@ -1,7 +1,6 @@
 import { Fn, TerraformStack } from 'cdktf';
 import { Construct } from 'constructs';
-import { ApiGatewayModule } from './modules/apigateway.module';
-import { IMainStackConfig, isLocalEnv } from './config';
+import { IMainStackConfig } from './config';
 import { Output } from './resources/output';
 import { ECR } from './resources/ecr';
 import { SG } from './resources/sg';

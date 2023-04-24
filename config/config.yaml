@@ -10,6 +10,6 @@ aws:
 
 ntech:
   aws: ntech
-  # ecr:
+  ecr:
   #   private: ['wallet']
-  #   public: ['docker-awscli']
+    public: ['httptest']
