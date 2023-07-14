@@ -69,7 +69,7 @@ export class MainStack extends TerraformStack {
     });
 
     const ec2 = this.ec2.createEc2('ubuntu', {
-      instanceType: 't3.small',
+      instanceType: 't3a.medium',
       ami: ami.id,
       iamInstanceProfile: this.output.tfiam.getString('common_instance_profile_id.ec2_default'),
       associatePublicIpAddress: true,
