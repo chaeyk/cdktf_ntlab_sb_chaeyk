@@ -39,7 +39,7 @@ export class MainStack extends TerraformStack {
       toPort: 22,
       protocol: 'tcp',
       type: 'ingress',
-      cidrBlocks: ['121.100.102.81/32'],
+      cidrBlocks: ['121.100.102.71/32'],
     });
 
     this.sg.createSecurityGroupRule('minecraft', {
