@@ -6,6 +6,7 @@ import { ECR } from './resources/ecr';
 import { SG } from './resources/sg';
 import { EC2 } from './resources/ec2';
 import { ROUTE53 } from './resources/route53';
+import { resolve } from 'dns';
 
 export class MainStack extends TerraformStack {
   private output: Output;

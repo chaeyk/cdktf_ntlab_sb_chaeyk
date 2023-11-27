@@ -27,4 +27,14 @@ terraform apply
 보통은 **cdktf deploy**로 하면 되는데 cdktf의 출력이 보기 힘들거나 디버깅을 하고 싶다면 terraform을 직접 실행하는 방법으로 하자.
 
 # 비고
-**cdktf synth|deploy** 를 실행하면 cdktf.out/stacks/{스택이름}에 cdk.tf.json 파일이 생성된다. 이 디렉토리에 들어와서 **terraform import** 나 **terraform state rm** 으로 이미 만들어진 리소스를 테라폼으로 가져오거나, 삭제할 수 있다.
+**cdktf synth|deploy** 를 실행하면 cdktf.out/stacks/{스택이름}에 cdk.tf.json 파일이 생성된다.
+이 디렉토리에 들어와서 **terraform import** 나 **terraform state rm** 으로 이미 만들어진 리소스를 테라폼으로 가져오거나, 삭제할 수 있다.
+
+# 업그레이드
+package.json 에서 cdktf, cdktf-cli 를 원하는 버전으로 올리고 @cdktf/provider-aws 삭제  
+그리고 아래와 같이 실행
+
+```bash
+npm i
+npx cdktf provider add aws
+```
