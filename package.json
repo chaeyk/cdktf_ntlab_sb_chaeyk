@@ -2,6 +2,7 @@
   "name": "tfcdk-sample",
   "version": "1.0.0",
   "main": "main.js",
+  "type": "module",
   "types": "main.ts",
   "license": "MPL-2.0",
   "private": true,
@@ -36,6 +37,7 @@
     "jest": "^29.5.0",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
+    "tsx": "^4.5.0",
     "typescript": "^4.9.5"
   }
 }

@@ -9,7 +9,8 @@
     "lib": [
       "es2018"
     ],
-    "module": "CommonJS",
+    "module": "es2022",
+    "moduleResolution": "node",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -22,7 +23,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "ES2018",
+    "target": "es2022",
     "incremental": true
   },
   "include": [

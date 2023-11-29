@@ -6,7 +6,6 @@ import { ECR } from './resources/ecr';
 import { SG } from './resources/sg';
 import { EC2 } from './resources/ec2';
 import { ROUTE53 } from './resources/route53';
-import { resolve } from 'dns';
 
 export class MainStack extends TerraformStack {
   private output: Output;
@@ -15,9 +14,12 @@ export class MainStack extends TerraformStack {
   private sg: SG;
   private ec2: EC2;
   private route53: ROUTE53;
+  private myip: string;
 
-  constructor(scope: Construct, name: string, readonly config: IMainStackConfig) {
+  constructor(scope: Construct, name: string, readonly config: IMainStackConfig, myip: string) {
     super(scope, name);
+
+    this.myip = myip;
 
     var output = new Output(this, config);
 
@@ -40,7 +42,7 @@ export class MainStack extends TerraformStack {
       toPort: 22,
       protocol: 'tcp',
       type: 'ingress',
-      cidrBlocks: ['121.100.102.71/32'],
+      cidrBlocks: [`${this.myip}/32`],
     });
 
     this.sg.createSecurityGroupRule('minecraft', {
