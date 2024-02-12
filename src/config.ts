@@ -43,7 +43,7 @@ export class MainStackConfig {
   };
 
   toPrefixedName(name: string): string {
-    return `${this.namePrefix}-${this.env}-${name}`;
+    return `${this.namePrefix}-${name}`;
   }
   
   toPrefixedId(type: string, name: string): string {

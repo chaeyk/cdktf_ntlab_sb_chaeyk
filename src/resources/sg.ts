@@ -14,7 +14,7 @@ export class SG {
 
   public createSecurityGroup(name: string, description: string) {
     return new SecurityGroup(this.stack, this.config.toPrefixedId('sg', name), {
-      name: `${this.config.namePrefix}-${name}`,
+      name: this.config.toPrefixedName(name),
       description,
       vpcId: this.output.tfvpc.getString('vpc_id'),
       tags: {

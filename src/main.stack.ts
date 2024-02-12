@@ -71,15 +71,16 @@ export class MainStack extends TerraformStack {
       owners: ['099720109477'], // Canonical
     });
 
+    const name = this.config.toPrefixedName('ubuntu');
     const ec2 = this.ec2.createEc2('ubuntu', {
       instanceType: 't3a.medium',
       ami: ami.id,
       iamInstanceProfile: this.output.tfiam.getString('common_instance_profile_id.ec2_default'),
       associatePublicIpAddress: true,
       tags: {
-        Name: `${this.config.namePrefix}-ubuntu`,
-        HostName: `${this.config.namePrefix}-ubuntu.${this.output.tfroute53zone.getString('domain.public')}`,
-        AnsibleGroup: `${this.config.namePrefix}-ubuntu`,
+        Name: name,
+        HostName: `${name}.${this.output.tfroute53zone.getString('domain.public')}`,
+        AnsibleGroup: `${name}`,
         TFNamePrefix: this.config.namePrefix,
         Terraform: 'true',
       },
