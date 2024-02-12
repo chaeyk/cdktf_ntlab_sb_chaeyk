@@ -1,6 +1,6 @@
 import { Fn, TerraformStack } from 'cdktf';
 import { Construct } from 'constructs';
-import { IMainStackConfig } from './config';
+import { MainStackConfig } from './config';
 import { Output } from './resources/output';
 import { ECR } from './resources/ecr';
 import { SG } from './resources/sg';
@@ -16,7 +16,7 @@ export class MainStack extends TerraformStack {
   private route53: ROUTE53;
   private myip: string;
 
-  constructor(scope: Construct, name: string, readonly config: IMainStackConfig, myip: string) {
+  constructor(scope: Construct, name: string, readonly config: MainStackConfig, myip: string) {
     super(scope, name);
 
     this.myip = myip;
@@ -42,7 +42,7 @@ export class MainStack extends TerraformStack {
       toPort: 22,
       protocol: 'tcp',
       type: 'ingress',
-      cidrBlocks: [`${this.myip}/32`],
+      cidrBlocks: [`${this.myip}/32`, '117.53.246.33/32'],
     });
 
     this.sg.createSecurityGroupRule('minecraft', {
