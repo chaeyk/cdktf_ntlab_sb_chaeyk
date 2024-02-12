@@ -11,29 +11,6 @@ export class MainStackConfig {
   region: string = '';
   dynamoTable: string = '';
   namePrefix: string = '';
-  webHookUrls: {
-    normal: string;
-    warning: string;
-    critical: string;
-    poolAddrAlarm: string;
-    feePayerAlarm: string;
-    adminAlarm: string;
-    balanceAlarm: string;
-    balanceAlarmSecond: string;
-    commonTrackerAlarm: string;
-    commonTrackerAlarmSecond: string;
-  } = {
-    normal: '',
-    warning: '',
-    critical: '',
-    poolAddrAlarm: '',
-    feePayerAlarm: '',
-    adminAlarm: '',
-    balanceAlarm: '',
-    balanceAlarmSecond: '',
-    commonTrackerAlarm: '',
-    commonTrackerAlarmSecond: '',
-  };
   ecr: {
     private: string[];
     public: string[];
