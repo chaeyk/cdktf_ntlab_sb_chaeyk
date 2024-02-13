@@ -1,6 +1,6 @@
 import { Fn, TerraformStack } from 'cdktf';
 import { Construct } from 'constructs';
-import { IMainStackConfig } from './config';
+import { MainStackConfig } from './config';
 import { Output } from './resources/output';
 import { ECR } from './resources/ecr';
 import { SG } from './resources/sg';
@@ -16,7 +16,7 @@ export class MainStack extends TerraformStack {
   private route53: ROUTE53;
   private myip: string;
 
-  constructor(scope: Construct, name: string, readonly config: IMainStackConfig, myip: string) {
+  constructor(scope: Construct, name: string, readonly config: MainStackConfig, myip: string) {
     super(scope, name);
 
     this.myip = myip;
@@ -71,15 +71,16 @@ export class MainStack extends TerraformStack {
       owners: ['099720109477'], // Canonical
     });
 
+    const name = this.config.toPrefixedName('ubuntu');
     const ec2 = this.ec2.createEc2('ubuntu', {
       instanceType: 't3a.medium',
       ami: ami.id,
       iamInstanceProfile: this.output.tfiam.getString('common_instance_profile_id.ec2_default'),
       associatePublicIpAddress: true,
       tags: {
-        Name: `${this.config.namePrefix}-ubuntu`,
-        HostName: `${this.config.namePrefix}-ubuntu.${this.output.tfroute53zone.getString('domain.public')}`,
-        AnsibleGroup: `${this.config.namePrefix}-ubuntu`,
+        Name: name,
+        HostName: `${name}.${this.output.tfroute53zone.getString('domain.public')}`,
+        AnsibleGroup: `${name}`,
         TFNamePrefix: this.config.namePrefix,
         Terraform: 'true',
       },

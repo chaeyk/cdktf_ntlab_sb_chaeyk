@@ -1,8 +1,7 @@
 import { DataAwsCallerIdentity } from '@cdktf/provider-aws/lib/data-aws-caller-identity';
 import { AwsProvider } from '@cdktf/provider-aws/lib/provider';
 import { DataTerraformRemoteStateS3, TerraformStack } from 'cdktf';
-import { IMainStackConfig, isStgEnv } from '../config';
-import { makeId, getFromMap } from '../util';
+import { MainStackConfig, isStgEnv } from '../config';
 
 export class Output {
   readonly identity: DataAwsCallerIdentity;
@@ -15,7 +14,7 @@ export class Output {
   readonly tfsg: DataTerraformRemoteStateS3;
   readonly tfiam: DataTerraformRemoteStateS3;
 
-  constructor(stack: TerraformStack, readonly config: IMainStackConfig) {
+  constructor(stack: TerraformStack, readonly config: MainStackConfig) {
     this.identity = new DataAwsCallerIdentity(stack, 'identity');
 
     // define resources here
