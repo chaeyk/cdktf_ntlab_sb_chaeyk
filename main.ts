@@ -3,7 +3,7 @@ import { MainStack } from './src/main.stack';
 import { getConfig, IMainStackConfig } from './src/config';
 import { lookup } from 'dns';
 
-const myip = await new Promise((resolve, reject) => {
+const myip: string = await new Promise((resolve, reject) => {
   lookup('chaeyk.iptime.org', (err, address, family) => {
     if (err) reject(err);
     resolve(address);
